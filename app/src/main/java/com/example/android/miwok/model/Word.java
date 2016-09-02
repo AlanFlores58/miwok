@@ -6,8 +6,17 @@ package com.example.android.miwok.model;
 public class Word {
 
 
+
     private String english;
     private String miwoz;
+    private int idImage = NO_IMAGE;
+    private static final int NO_IMAGE = -1;
+
+    public Word(String english, String miwoz, int idImage) {
+        this.english = english;
+        this.miwoz = miwoz;
+        this.idImage = idImage;
+    }
 
     public Word(String english, String miwoz) {
         this.english = english;
@@ -28,6 +37,18 @@ public class Word {
 
     public void setMiwoz(String miwoz) {
         this.miwoz = miwoz;
+    }
+
+    public int getIdImage() {
+        return idImage;
+    }
+
+    public void setIdImage(int idImage) {
+        this.idImage = idImage;
+    }
+
+    public boolean hasImage(){
+        return idImage != NO_IMAGE;
     }
 
 }

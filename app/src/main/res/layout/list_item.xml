@@ -2,31 +2,45 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="16dp"
+    android:layout_height="88dp"
     android:id="@+id/linear"
+    tools:background="#FD8509"
     xmlns:tools="http://schemas.android.com/tools">
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/ic_launcher"
-        android:layout_marginRight="16dp"/>
+        android:layout_width="88dp"
+        android:layout_height="88dp"
+        tools:src="@mipmap/ic_launcher"
+        android:id="@+id/image"
+        android:background="#FFF7DA"/>
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="16dp"
+        android:orientation="vertical"
+        android:layout_gravity="center_vertical">
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:id="@+id/text1"
-            tools:text="lutti"/>
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="#FFFFFF"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:gravity="bottom"
+            tools:text="lutti xjmowmdxklmsxsxsxsxs"/>
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:textSize="18sp"
+            android:textColor="#FFFFFF"
+            android:gravity="top"
             android:id="@+id/text2"
-            tools:text="one"/>
+            android:textAppearance="?android:textAppearanceMedium"
+            tools:text="one kxmmlkdsmsxs"/>
 
     </LinearLayout>
 
