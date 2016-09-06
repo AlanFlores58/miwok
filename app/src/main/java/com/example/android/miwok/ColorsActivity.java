@@ -43,7 +43,7 @@ public class ColorsActivity extends AppCompatActivity {
                     mediaPlayer = MediaPlayer.create(ColorsActivity.this,word.get(position).getIdAudio());
                     mediaPlayer.start();
                     Toast.makeText(ColorsActivity.this,"List item clicked",Toast.LENGTH_SHORT).show();
-                    Log.v("ColorsActivity","Curent word: " + word.get(position));
+                    Log.v("ColorsActivity","Current word: " + word.get(position));
                 }catch (Exception e)
                 {
                     Log.v("Erro",e.getMessage());

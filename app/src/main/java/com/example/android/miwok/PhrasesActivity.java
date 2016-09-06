@@ -42,7 +42,7 @@ public class PhrasesActivity extends AppCompatActivity {
                 try {
                     mediaPlayer = MediaPlayer.create(PhrasesActivity.this,word.get(position).getIdAudio());
                     mediaPlayer.start();
-                    Log.v("PhrasesActivity","Curent word: " + word.get(position));
+                    Log.v("PhrasesActivity","Current word:  " + word.get(position));
                     Toast.makeText(PhrasesActivity.this,"List item clicked",Toast.LENGTH_SHORT).show();
                 }catch (Exception e)
                 {

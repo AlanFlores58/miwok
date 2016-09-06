@@ -82,7 +82,7 @@ public class NumbersActivity extends AppCompatActivity {
                 try {
                     mediaPlayer = MediaPlayer.create(NumbersActivity.this,word.get(position).getIdAudio());
                     mediaPlayer.start();
-                    Log.v("NumbersActivity","Curent word: " + word.get(position));
+                    Log.v("NumbersActivity","Current word: " + word.get(position));
                     Toast.makeText(NumbersActivity.this,"List item clicked",Toast.LENGTH_SHORT).show();
                 }catch (Exception e)
                 {
