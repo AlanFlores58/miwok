@@ -11,6 +11,20 @@ public class Word {
     private String miwoz;
     private int idImage = NO_IMAGE;
     private static final int NO_IMAGE = -1;
+    private int idAudio;
+
+    public Word(String english, String miwoz, int idImage, int idAudio) {
+        this.english = english;
+        this.miwoz = miwoz;
+        this.idImage = idImage;
+        this.idAudio = idAudio;
+    }
+
+    public Word(int idAudio,String english, String miwoz ) {
+        this.english = english;
+        this.miwoz = miwoz;
+        this.idAudio = idAudio;
+    }
 
     public Word(String english, String miwoz, int idImage) {
         this.english = english;
@@ -21,6 +35,14 @@ public class Word {
     public Word(String english, String miwoz) {
         this.english = english;
         this.miwoz = miwoz;
+    }
+
+    public int getIdAudio() {
+        return idAudio;
+    }
+
+    public void setIdAudio(int idAudio) {
+        this.idAudio = idAudio;
     }
 
     public String getEnglish() {

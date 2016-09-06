@@ -60,17 +60,17 @@ public class NumbersActivity extends AppCompatActivity {
         listView.setAdapter(itemsAdapter);*/
 
 
-        ArrayList<Word> word = new ArrayList<Word>();
-        word.add(new Word("one","lutti",R.drawable.number_one));
-        word.add(new Word("two","otiiko",R.drawable.number_two));
-        word.add(new Word("Three","tolookosu",R.drawable.number_three));
-        word.add(new Word("Four","oyyisa",R.drawable.number_four));
-        word.add(new Word("Five","massokka",R.drawable.number_five));
-        word.add(new Word("Six","temmokka",R.drawable.number_six));
-        word.add(new Word("Seven","kenekaku",R.drawable.number_seven));
-        word.add(new Word("Eight","kawinta",R.drawable.number_eight));
-        word.add(new Word("Nine","wo'e",R.drawable.number_nine));
-        word.add(new Word("Ten","na'aacha",R.drawable.number_ten));
+        final ArrayList<Word> word = new ArrayList<Word>();
+        word.add(new Word("one","lutti",R.drawable.number_one,R.raw.number_one));
+        word.add(new Word("two","otiiko",R.drawable.number_two,R.raw.number_two));
+        word.add(new Word("Three","tolookosu",R.drawable.number_three,R.raw.number_three));
+        word.add(new Word("Four","oyyisa",R.drawable.number_four,R.raw.number_four));
+        word.add(new Word("Five","massokka",R.drawable.number_five,R.raw.number_five));
+        word.add(new Word("Six","temmokka",R.drawable.number_six,R.raw.number_six));
+        word.add(new Word("Seven","kenekaku",R.drawable.number_seven,R.raw.number_seven));
+        word.add(new Word("Eight","kawinta",R.drawable.number_eight,R.raw.number_eight));
+        word.add(new Word("Nine","wo'e",R.drawable.number_nine,R.raw.number_nine));
+        word.add(new Word("Ten","na'aacha",R.drawable.number_ten,R.raw.number_ten));
         WordAdapter itemsAdapter = new WordAdapter(this,word,R.color.category_numbers);
         ListView listView = (ListView) findViewById(R.id.list);
         listView.setAdapter(itemsAdapter);
@@ -80,7 +80,7 @@ public class NumbersActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position,long id){
                 try {
-                    mediaPlayer = MediaPlayer.create(NumbersActivity.this,R.raw.number_one);
+                    mediaPlayer = MediaPlayer.create(NumbersActivity.this,word.get(position).getIdAudio());
                     mediaPlayer.start();
                     Toast.makeText(NumbersActivity.this,"List item clicked",Toast.LENGTH_SHORT).show();
                 }catch (Exception e)
