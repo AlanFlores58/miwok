@@ -1,13 +1,17 @@
 package com.example.android.miwok;
 
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.android.miwok.adapter.WordAdapter;
 import com.example.android.miwok.model.Word;
@@ -16,6 +20,7 @@ import java.util.ArrayList;
 
 public class NumbersActivity extends AppCompatActivity {
 
+    private MediaPlayer mediaPlayer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,5 +74,21 @@ public class NumbersActivity extends AppCompatActivity {
         WordAdapter itemsAdapter = new WordAdapter(this,word,R.color.category_numbers);
         ListView listView = (ListView) findViewById(R.id.list);
         listView.setAdapter(itemsAdapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position,long id){
+                try {
+                    mediaPlayer = MediaPlayer.create(NumbersActivity.this,R.raw.number_one);
+                    mediaPlayer.start();
+                    Toast.makeText(NumbersActivity.this,"List item clicked",Toast.LENGTH_SHORT).show();
+                }catch (Exception e)
+                {
+                    Log.v("Erro",e.getMessage());
+                }
+
+            }
+        });
     }
 }
