@@ -73,4 +73,13 @@ public class Word {
         return idImage != NO_IMAGE;
     }
 
+    @Override
+    public String toString() {
+        return "Word{" +
+                "english='" + english + '\'' +
+                ", miwoz='" + miwoz + '\'' +
+                ", idImage=" + idImage +
+                ", idAudio=" + idAudio +
+                '}';
+    }
 }

@@ -42,6 +42,7 @@ public class FamilyActivity extends AppCompatActivity {
                     mediaPlayer = MediaPlayer.create(FamilyActivity.this,word.get(position).getIdAudio());
                     mediaPlayer.start();
                     Toast.makeText(FamilyActivity.this,"List item clicked",Toast.LENGTH_SHORT).show();
+                    Log.v("FamilyActivity","Curent word: " + word.get(position));
                 }catch (Exception e)
                 {
                     Log.v("Erro",e.getMessage());
