@@ -25,20 +25,21 @@ public class WordAdapter extends ArrayAdapter<Word> {
 
     private int color = -1;
 
-    public WordAdapter(Activity context, ArrayList<Word> words,int color){
-        super(context,0,words);
+    public WordAdapter(Activity context, ArrayList<Word> words, int color) {
+        super(context, 0, words);
         this.color = color;
     }
 
-    public WordAdapter(Activity context, ArrayList<Word> words){
-        super(context,0,words);
+    public WordAdapter(Activity context, ArrayList<Word> words) {
+        super(context, 0, words);
     }
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
         View listItemView = convertView;
-        if(listItemView == null){
-            listItemView = LayoutInflater.from(getContext()).inflate(R.layout.list_item,parent,false);
+        if (listItemView == null) {
+            listItemView = LayoutInflater.from(getContext()).inflate(R.layout.list_item, parent, false);
         }
 
         Word currentWord = getItem(position);
@@ -50,14 +51,14 @@ public class WordAdapter extends ArrayAdapter<Word> {
         text2.setText(currentWord.getMiwoz());
 
         ImageView image = (ImageView) listItemView.findViewById(R.id.image);
-        if(currentWord.hasImage())
+        if (currentWord.hasImage())
             image.setImageResource(currentWord.getIdImage());
         else
             image.setVisibility(View.GONE);
 
 
-        if(color != -1){
-            int newColor = ContextCompat.getColor(getContext(),color);
+        if (color != -1) {
+            int newColor = ContextCompat.getColor(getContext(), color);
             LinearLayout linearLayout = (LinearLayout) listItemView.findViewById(R.id.linear);
             linearLayout.setBackgroundColor(newColor);
         }

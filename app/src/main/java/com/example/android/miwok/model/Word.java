@@ -6,7 +6,6 @@ package com.example.android.miwok.model;
 public class Word {
 
 
-
     private String english;
     private String miwoz;
     private int idImage = NO_IMAGE;
@@ -20,7 +19,7 @@ public class Word {
         this.idAudio = idAudio;
     }
 
-    public Word(int idAudio,String english, String miwoz ) {
+    public Word(int idAudio, String english, String miwoz) {
         this.english = english;
         this.miwoz = miwoz;
         this.idAudio = idAudio;
@@ -69,7 +68,7 @@ public class Word {
         this.idImage = idImage;
     }
 
-    public boolean hasImage(){
+    public boolean hasImage() {
         return idImage != NO_IMAGE;
     }
 

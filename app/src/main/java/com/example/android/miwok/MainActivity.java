@@ -36,51 +36,51 @@ public class MainActivity extends AppCompatActivity {
         //numbers
         TextView numbers = (TextView) findViewById(R.id.numbers);
         //numbers.setOnClickListener(new NumbersClickListener());
-            numbers.setOnClickListener(new View.OnClickListener() {
+        numbers.setOnClickListener(new View.OnClickListener() {
 
-                @Override
-                public void onClick(View view) {
-                    Intent i = new Intent(MainActivity.this, NumbersActivity.class);
-                    startActivity(i);
-                }
-            });
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this, NumbersActivity.class);
+                startActivity(i);
+            }
+        });
 
 
-            //family members
-            TextView family = (TextView) findViewById(R.id.family);
+        //family members
+        TextView family = (TextView) findViewById(R.id.family);
 
-            family.setOnClickListener(new View.OnClickListener() {
+        family.setOnClickListener(new View.OnClickListener() {
 
-                @Override
-                public void onClick(View view) {
-                    Intent i = new Intent(MainActivity.this, FamilyActivity.class);
-                    startActivity(i);
-                }
-            });
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this, FamilyActivity.class);
+                startActivity(i);
+            }
+        });
 
-            //colors
-            TextView color = (TextView) findViewById(R.id.colors);
+        //colors
+        TextView color = (TextView) findViewById(R.id.colors);
 
-            color.setOnClickListener(new View.OnClickListener() {
+        color.setOnClickListener(new View.OnClickListener() {
 
-                @Override
-                public void onClick(View view) {
-                    Intent i = new Intent(MainActivity.this, ColorsActivity.class);
-                    startActivity(i);
-                }
-            });
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this, ColorsActivity.class);
+                startActivity(i);
+            }
+        });
 
-            //phrases
-            TextView phrases = (TextView) findViewById(R.id.phrases);
+        //phrases
+        TextView phrases = (TextView) findViewById(R.id.phrases);
 
-            phrases.setOnClickListener(new View.OnClickListener() {
+        phrases.setOnClickListener(new View.OnClickListener() {
 
-                @Override
-                public void onClick(View view) {
-                    Intent i = new Intent(MainActivity.this, PhrasesActivity.class);
-                    startActivity(i);
-                }
-            });
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this, PhrasesActivity.class);
+                startActivity(i);
+            }
+        });
     }
 
     /*public void openNumberList(View view){
