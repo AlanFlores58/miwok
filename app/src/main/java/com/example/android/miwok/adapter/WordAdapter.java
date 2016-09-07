@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.android.miwok.R;
@@ -59,7 +60,7 @@ public class WordAdapter extends ArrayAdapter<Word> {
 
         if (color != -1) {
             int newColor = ContextCompat.getColor(getContext(), color);
-            LinearLayout linearLayout = (LinearLayout) listItemView.findViewById(R.id.linear);
+            RelativeLayout linearLayout = (RelativeLayout) listItemView.findViewById(R.id.linear);
             linearLayout.setBackgroundColor(newColor);
         }
 
