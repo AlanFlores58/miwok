@@ -3,30 +3,26 @@ package com.example.android.miwok;
 import android.content.Context;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
-import android.provider.MediaStore;
-import android.support.v4.app.NavUtils;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBar;
 import android.util.Log;
-import android.view.MenuItem;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.GridView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.android.miwok.adapter.WordAdapter;
 import com.example.android.miwok.model.Word;
 
 import java.util.ArrayList;
 
-public class NumbersActivity extends AppCompatActivity {
+public class NumbersFragment extends Fragment {
 
-    /*private MediaPlayer mediaPlayer;
+    private MediaPlayer mediaPlayer;
 
     private MediaPlayer.OnCompletionListener onCompletionListener = new MediaPlayer.OnCompletionListener() {
         @Override
@@ -49,22 +45,20 @@ public class NumbersActivity extends AppCompatActivity {
                         releaseMediaPlayer();
                     }
                 }
-            };*/
+            };
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_category);
-        getSupportFragmentManager().beginTransaction().replace(R.id.container,new NumbersFragment()).commit();
-        getSupportActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-     /**   setContentView(R.layout.word_list);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        View rootView = inflater.inflate(R.layout.word_list, container,false);
+        /*super.onCreate(savedInstanceState);
+        setContentView(R.layout.word_list);
 
         getSupportActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);*/
 
 
-        audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+        audioManager = (AudioManager) getActivity().getSystemService(Context.AUDIO_SERVICE);
 
         /*String[] words = new String[]{"one","two","Three","Four","Five","Six","Seven","Eight","Nine","Ten"};
         for(int i=0;i<10;i++)
@@ -97,7 +91,7 @@ public class NumbersActivity extends AppCompatActivity {
         /*ArrayAdapter<String> itemsAdapter = new ArrayAdapter<String>(this, R.layout.list_item, words2);
 
         ListView listView = (ListView) findViewById(R.id.list);
-        listView.setAdapter(itemsAdapter);
+        listView.setAdapter(itemsAdapter);*/
 
 
         final ArrayList<Word> word = new ArrayList<Word>();
@@ -111,20 +105,20 @@ public class NumbersActivity extends AppCompatActivity {
         word.add(new Word("Eight", "kawinta", R.drawable.number_eight, R.raw.number_eight));
         word.add(new Word("Nine", "wo'e", R.drawable.number_nine, R.raw.number_nine));
         word.add(new Word("Ten", "na'aacha", R.drawable.number_ten, R.raw.number_ten));
-        WordAdapter itemsAdapter = new WordAdapter(this, word, R.color.category_numbers);
-        ListView listView = (ListView) findViewById(R.id.list);
+        WordAdapter itemsAdapter = new WordAdapter(getActivity(), word, R.color.category_numbers);
+        ListView listView = (ListView) rootView.findViewById(R.id.list);
         listView.setAdapter(itemsAdapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                try {
+                //try {
                     releaseMediaPlayer();
                     int result = audioManager.requestAudioFocus(onAudioFocusChangeListener, AudioManager.STREAM_MUSIC, AudioManager.AUDIOFOCUS_GAIN_TRANSIENT);
                     if (result == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
 
-                        mediaPlayer = MediaPlayer.create(NumbersActivity.this, word.get(position).getIdAudio());
+                        mediaPlayer = MediaPlayer.create(getActivity(), word.get(position).getIdAudio());
                         mediaPlayer.start();
 
                         //one way
@@ -134,21 +128,23 @@ public class NumbersActivity extends AppCompatActivity {
                             public void onCompletion(MediaPlayer mediaPlayer){
                                 releaseMediaPlayer();
                             }
-                        });
+                        });*/
                         mediaPlayer.setOnCompletionListener(onCompletionListener);
                         //Log.v("NumbersActivity","Current word: " + word.get(position));
                         //Toast.makeText(NumbersActivity.this,"List item clicked",Toast.LENGTH_SHORT).show();
-                    }
-                } catch (Exception e) {
+                   }
+                /* } catch (Exception e) {
                     Log.v("Erro", e.getMessage());
-                }
+                }*/
 
             }
-        });**/
+        });
+
+        return rootView;
     }
-/**
+
     @Override
-    protected void onStop() {
+    public void onStop() {
         super.onStop();
         releaseMediaPlayer();
     }

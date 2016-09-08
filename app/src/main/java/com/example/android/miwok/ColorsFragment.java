@@ -3,32 +3,26 @@ package com.example.android.miwok;
 import android.content.Context;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Layout;
+import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBar;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.example.android.miwok.adapter.WordAdapter;
 import com.example.android.miwok.model.Word;
 
 import java.util.ArrayList;
 
-public class ColorsActivity extends AppCompatActivity {
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_category);
-        getSupportFragmentManager().beginTransaction().replace(R.id.container,new ColorsFragment()).commit();
-        getSupportActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    }
-    /**private MediaPlayer mediaPlayer;
+/**
+ * Created by alan_flores on 8/09/16.
+ */
+public class ColorsFragment extends Fragment {
+    private MediaPlayer mediaPlayer;
     private MediaPlayer.OnCompletionListener onCompletionListener = new MediaPlayer.OnCompletionListener() {
         @Override
         public void onCompletion(MediaPlayer mediaPlayer) {
@@ -53,13 +47,11 @@ public class ColorsActivity extends AppCompatActivity {
             };
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.word_list);
-        getSupportActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        View rootView = inflater.inflate(R.layout.word_list, container,false);
 
-        audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+        audioManager = (AudioManager) getActivity().getSystemService(Context.AUDIO_SERVICE);
         final ArrayList<Word> word = new ArrayList<Word>();
         word.add(new Word("red", "wetetti", R.drawable.color_red, R.raw.color_red));
         word.add(new Word("green", "chokokki", R.drawable.color_green, R.raw.color_green));
@@ -69,8 +61,8 @@ public class ColorsActivity extends AppCompatActivity {
         word.add(new Word("white", "kelelli", R.drawable.color_white, R.raw.color_white));
         word.add(new Word("dusty yellow", "topiise", R.drawable.color_dusty_yellow, R.raw.color_dusty_yellow));
         word.add(new Word("mustard yellow", "chiwiite", R.drawable.color_mustard_yellow, R.raw.color_mustard_yellow));
-        WordAdapter itemsAdapter = new WordAdapter(this, word, R.color.category_colors);
-        ListView listView = (ListView) findViewById(R.id.list);
+        WordAdapter itemsAdapter = new WordAdapter(getActivity(), word, R.color.category_colors);
+        ListView listView = (ListView) rootView.findViewById(R.id.list);
         listView.setAdapter(itemsAdapter);
         //listView.setBackgroundColor(0x8800A0);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -81,7 +73,7 @@ public class ColorsActivity extends AppCompatActivity {
                     releaseMediaPlayer();
                     int result = audioManager.requestAudioFocus(onAudioFocusChangeListener, AudioManager.STREAM_MUSIC, AudioManager.AUDIOFOCUS_GAIN_TRANSIENT);
                     if (result == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
-                        mediaPlayer = MediaPlayer.create(ColorsActivity.this, word.get(position).getIdAudio());
+                        mediaPlayer = MediaPlayer.create(getActivity(), word.get(position).getIdAudio());
                         mediaPlayer.start();
                         mediaPlayer.setOnCompletionListener(onCompletionListener);
                         //Log.v("ColorsActivity","Current word: " + word.get(position));
@@ -92,10 +84,12 @@ public class ColorsActivity extends AppCompatActivity {
 
             }
         });
+
+        return rootView;
     }
 
     @Override
-    protected void onStop() {
+    public void onStop() {
         super.onStop();
         releaseMediaPlayer();
     }
@@ -106,5 +100,5 @@ public class ColorsActivity extends AppCompatActivity {
             mediaPlayer = null;
             audioManager.abandonAudioFocus(onAudioFocusChangeListener);
         }
-    }**/
+    }
 }
